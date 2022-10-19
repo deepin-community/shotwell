@@ -1,0 +1,18 @@
+#!/usr/bin/make -f
+
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+
+export VALAFLAGS:=$(foreach w,$(CPPFLAGS) $(CFLAGS) $(LDFLAGS),-X $(w))
+
+%:
+	dh $@  --buildsystem=meson --with gnome
+
+override_dh_gnome_clean:
+	dh_gnome_clean --no-control
+
+override_dh_install:
+	dh_install
+	# Remove unwanted la files
+	rm -f debian/shotwell/usr/lib/*/shotwell/plugins/builtin/*.la
+	rm -f debian/shotwell/usr/lib/*/*shotwell*.a
+	rm -f debian/shotwell/usr/lib/*/*shotwell*.la

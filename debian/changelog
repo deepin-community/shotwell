@@ -1,0 +1,927 @@
+shotwell (0.30.14-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Declare compliance with Debian Policy 4.6.0 (No changes needed).
+  * debian/copyright:
+    - Add year 2021 for debian/* to myself.
+
+ -- Jörg Frings-Fürst <debian@jff.email>  Wed, 18 Aug 2021 20:59:02 +0200
+
+shotwell (0.30.11-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Jörg Frings-Fürst <debian@jff.email>  Fri, 04 Dec 2020 19:22:52 +0100
+
+shotwell (0.30.10-1) unstable; urgency=medium
+
+  * New upstream release.
+    - Remove debian/patches/0115-fix_meson_build.patch.
+  * debian/shotwell.manpages:
+    - Install from debin/tmp to make dh_missing happy.
+  * debian/shotwell.install:
+    - Install from debin/tmp to make dh_missing happy.
+  * debian/control:
+    - Switch to debhelper-compat level 13.
+
+ -- Jörg Frings-Fürst <debian@jff.email>  Tue, 26 May 2020 11:50:55 +0200
+
+shotwell (0.30.8-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Declare compliance with Debian Policy 4.5.0 (No changes needed).
+  * debian/copyright:
+    - Add year 2020 for debian/*.
+
+ -- Jörg Frings-Fürst <debian@jff.email>  Sat, 11 Apr 2020 12:28:05 +0200
+
+shotwell (0.30.7-2) unstable; urgency=medium
+
+  * debian/control: Remove outdated gnome-doc-utils from Build-Depends
+    (Closes: #945141, #945294).
+  * Switch to debhelper-compat:
+    - debian/control: Replace debhelper with debhelper-compat.
+    - Remove debian/compat.
+
+ -- Jörg Frings-Fürst <debian@jff.email>  Sat, 28 Dec 2019 14:09:00 +0100
+
+shotwell (0.30.7-1) unstable; urgency=medium
+
+  * New upstream release:
+    - New debian/patches/0115-fix_meson_build.patch to fix FTBFS.
+    - debian/control: Add cmake to Build-Depends.
+  * Declare compliance with Debian Policy 4.4.1 (No changes needed).
+  * debian/control:
+    - Add Rules-Requires-Root: binary-targets.
+  * Remove unused patches.
+
+ -- Jörg Frings-Fürst <debian@jff.email>  Mon, 07 Oct 2019 16:38:02 +0200
+
+shotwell (0.30.5-1) unstable; urgency=medium
+
+  * New upstream release.
+    - Remove debian/patches/0110-fix_GoogleAuthenticator.patch.
+
+ -- Jörg Frings-Fürst <debian@jff.email>  Thu, 15 Aug 2019 11:29:40 +0200
+
+shotwell (0.30.4-2) unstable; urgency=medium
+
+  * Fix GoogleAuthenticator error handling (Closes: #934723):
+    - New debian/patches/0110-fix_GoogleAuthenticator.patch cherry-picked
+      from upstream.
+
+ -- Jörg Frings-Fürst <debian@jff.email>  Wed, 14 Aug 2019 12:00:37 +0200
+
+shotwell (0.30.4-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Declare compliance with Debian Policy 4.4.0 (No changes needed).
+  * Add package-name-doesnt-match-sonames to lintian-overrides.
+  * Refresh debian/copyright.
+  * Migrate to debhelper 12:
+    - Change debian/compat to 12.
+    - Change debhelper version in debian/control to >= 12.
+  * debian/copyright: Fix typo.
+
+ -- Jörg Frings-Fürst <debian@jff.email>  Fri, 12 Jul 2019 11:05:56 +0200
+
+shotwell (0.30.1-1) unstable; urgency=medium
+
+  * New upstream release.
+    - Switch to buildsystem meson:
+      + debian/control: Add gnome-pkg-tools, meson and ninja-build to
+        Build-Depends.
+      + debian/rules: Add --buildsystem=meson --with gnome,
+        remove override_dh_auto_configure and add override_dh_gnome_clean.
+    - debian/shotwell.docs: change README to README.md.
+    - Refresh debian/copyright.
+  * Declare compliance with Debian Policy 4.2.1 (No changes needed).
+  * debian/rules: remove unused calculation of B_DATE.
+  * debian/shotwell.install: Add usr/share/metainfo (Closes: #906143).
+
+ -- Jörg Frings-Fürst <debian@jff.email>  Sun, 30 Sep 2018 19:02:22 +0200
+
+shotwell (0.28.4-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Jörg Frings-Fürst <debian@jff.email>  Sat, 04 Aug 2018 14:40:03 +0200
+
+shotwell (0.28.3-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Remove upstream applied patches:
+    - 0100-ios8.patch
+  * New debian/patches/0105-gitversion.patch to fix FTBFS.
+  * Migrate to debhelper 11:
+    - Change debian/compat to 11.
+    - Change debhelper version in debian/control to >= 11.
+  * debian/control:
+    - Switch Vcs-* to new location.
+  * debian/copyright:
+    - Use secure copyright format URI.
+    - Bump years to 2018.
+  * Declare compliance with Debian Policy 4.1.5 (No changes needed).
+  * Remove unneeded comments from shotwell.lintian-overrides.
+
+ -- Jörg Frings-Fürst <debian@jff.email>  Sun, 08 Jul 2018 14:34:46 +0200
+
+shotwell (0.26.4-1) unstable; urgency=medium
+
+  * New upstream release (Closes: #855681, #841859, #870027):
+    - debian/control: Add new appstream-util, libappstream-glib-dev and
+      libgdata-dev to Build-Depends.
+    - debian/shotwell.install: Drop now empty directory usr/share/appdata.
+  * New README.source to explain the branching model used.
+  * Use the automatic debug symbol packages:
+    - Remove shotwell-dbg section from debian/control.
+    - Remove override_dh_strip, override_dh_compress and some lines
+      on dh_install from debian/rules.
+    - Remove debian/shotwell-dbg.README.Debian.
+  * Use the upstream ChangeLog as changelog and add NEWS to docs.
+  * Remove debian/shotwell.1 to use the upstream man page.
+  * Don't install man page at shotwell-common.
+  * Remove unnecessary debian/menu.
+  * Some packaging improvements (Closes:# 856708):
+    - Move .desktop and appstream metadata from shotwell-common to shotwell.
+    - debian/rules:
+      + Use dh_auto_configure instead of ./configure.
+      + Update rm paths for multiarch.
+      + Don't install the .a file either.
+    - Remove build-depend m4 since debhelper version 10 use autoconf.
+    - Thanks to Jeremy Bicha <jbicha@ubuntu.com>
+  * debian/changelog:
+    - Remove trailing white spaces.
+  * debian/watch:
+    Rewrite to find only stable releases.
+  * Declare compliance with Debian Policy 4.1.2.0 (No changes needed).
+  * Change to my new email-address:
+    - debian/control,
+    - debian/copyright.
+
+ -- Jörg Frings-Fürst <debian@jff.email>  Fri, 15 Dec 2017 11:52:17 +0100
+
+shotwell (0.25.4+really0.24.5-0.1) unstable; urgency=medium
+
+  * Revert to last stable release 0.24.5 (Closes: #850149).
+    (Necessary, since unblock request #854912 for 0.25.4-0.1 was turned down.)
+
+ -- Richard B. Kreckel <kreckel@debian.org>  Tue, 14 Feb 2017 18:47:24 +0100
+
+shotwell (0.25.4-0.1) unstable; urgency=medium
+
+  * New upstream release.
+    - Many UI fixes (Closes: #849688).
+
+ -- Richard B. Kreckel <kreckel@debian.org>  Sun, 05 Jan 2017 18:43:12 +0100
+
+shotwell (0.25.4-1) unstable; urgency=medium
+
+  * New upstream release (Closes: #849688, #851711).
+  * debian/copyright:
+    - Update copyright years for 2017.
+
+ -- Jörg Frings-Fürst <debian@jff-webhosting.net>  Fri, 03 Feb 2017 14:23:16 +0100
+
+shotwell (0.25.1-1) unstable; urgency=medium
+
+  * New upstream release.
+    - Fix issue with indexes on PhotoTable (Closes: #777499).
+  * debian/patches:
+    - Refresh 0100-ios8.patch.
+  * debian/control:
+    - Add libgcr-3-dev to Build-Depends.
+    - Bump libgexiv2-dev B-D minimum version to 0.10.4.
+    - Bump libglib2.0-dev B-D minimum version to 2.40.
+    - Bump libgtk-3-dev B-D minimum version to 3.14.
+
+ -- Jörg Frings-Fürst <debian@jff-webhosting.net>  Fri, 25 Nov 2016 04:24:55 +0100
+
+shotwell (0.24.0-1) unstable; urgency=medium
+
+  * New upstream release (Closes: #824164, #825788).
+    - Fix inconsistent licensing metadata in icons/rejected.svg
+      (Closes: #800902).
+    - Fix crashes when opening files with external editor
+      (Closes: #806248).
+    - Fix scrollbars disappearing when resizing main window
+      (Closes: #823835).
+    - Install private executables shotwell-settings-migrator and
+      shotwell-video-thumbnailer into /usr/lib/shotwell
+      (Closes: #833236).
+  * debian/control:
+    - Add itstool to Build-Depends.
+    - Bump debhelper B-D minimum version to 10.
+    - Bump libgee-0.8 B-D minimum version to 0.10.
+    - Switch Depends for shotwell binary package from dbus-x11 to
+      default-dbus-session-bus | dbus-session-bus (Closes: #836046).
+  * debian/copyright:
+    - Add Software Freedom Conservancy Inc.
+  * debian/manpages:
+    - Rename to debian/shotwell.manpages and use the
+      manpage supplied upstream.
+  * debian/patches:
+    - New 0600-remove_wrong_marco.patch to remove the wrong macro 'R'.
+    - Refresh patches.
+    - Drop patches applied upstream:
+      + 0001-buildflags.patch
+      + 0005-hardening.patch
+      + 0500-Port-to-webkit2gtk-40.patch
+      + 0501-Dont-pack-webview-into-a-scrolled-window.patch
+      + 0502-Have-all-soup-sessions-validate-TLS-certificates.patch
+      + 0503-facebook-Dont-disable-XSS-auditor.patch
+  * debian/rules:
+    - Make build reproducible (Closes: #822948):
+      + Fix date handling for non-English locales.
+      + Fix files mode in temp-source tarball.
+      Thanks to Alexis Bienvenüe <pado@passoire.fr>.
+    - Remove unwanted .la files.
+  * debian/shotwell-common.postrm:
+    - New script to rebuild icon cache after purge and remove with
+      a test that gtk-update-icon-cache exists and is executable.
+  * debian/shotwell.install:
+    - Remove missing apport/shotwell.py.
+  * debian/shotwell-common.install:
+    - Remove now redundant installation of manpage.
+  * debian/watch:
+    - Rewrite regular expression.
+
+ -- Jörg Frings-Fürst <debian@jff-webhosting.net>  Wed, 21 Sep 2016 22:31:48 +0200
+
+shotwell (0.22.1-1) unstable; urgency=medium
+
+  * New upstream release.
+    - Update translations.
+  * debian/control:
+    - Bump Standards-Version to 3.9.8 (no changes required).
+    - Correct Vcs-Git URI.
+    - Improve package description (Closes: #818671).
+    - Drop the following fields because even oldstable has 0.12.3-2~:
+      + Breaks: shotwell (<< 0.12.3-1)
+      + Replaces: shotwell (<< 0.12.3-1)
+  * Set compat level to 10 (no changes required).
+  * Correct typo at shotwell-dbg.README.Debian.
+  * debian/rules:
+    - Touch generated C files with mtime of debian/changelog to ensure
+      the mtime of these C files never changes before installing them
+      into the shotwell-dbg package. Makes build reproducible.
+
+ -- Jörg Frings-Fürst <debian@jff-webhosting.net>  Sun, 17 Apr 2016 22:15:57 +0200
+
+shotwell (0.22.0-4) unstable; urgency=medium
+
+  * New debian/patches/0100-ios8.patch (Closes: #792016):
+    - Quick and dirty patch to get iOS 8 devices ready to download files.
+      Download from https://bugzilla.gnome.org/show_bug.cgi?id=742295#c22.
+      Thanks to Obsidian.
+  * debian/control:
+    - Bump Standards-Version to 3.9.7 (no changes required).
+    - Change Vcs-* to secure uri.
+  * debian/watch: Bump Version to 4 (no changes required).
+
+ -- Jörg Frings-Fürst <debian@jff-webhosting.net>  Mon, 22 Feb 2016 06:43:14 +0100
+
+shotwell (0.22.0-3) unstable; urgency=medium
+
+  * debian/rules:
+    - Touch temporary C files with the timestamp of
+      debian/changelog to make the build reproducible.
+  * Verify TLS certificates (Closes: #807110):
+    - Cherry-pick patches from upstream in debian/patches:
+      + 0500-Port-to-webkit2gtk-40.patch
+      + 0501-Dont-pack-webview-into-a-scrolled-window.patch
+      + 0502-Have-all-soup-sessions-validate-TLS-certificates.patch
+      + 0503-facebook-Dont-disable-XSS-auditor.patch
+    - Replace libwebkitgtk-3.0-dev with libwebkit2gtk-4.0-dev
+      in Build-Depends in debian/control.
+  * Rename patches.
+  * debian/copyright:
+    - Update for 2016.
+
+ -- Jörg Frings-Fürst <debian@jff-webhosting.net>  Sun, 10 Jan 2016 16:53:26 +0100
+
+shotwell (0.22.0-2) unstable; urgency=medium
+
+  * debian/control:
+    - Add dconf-cli to Depends for binary package shotwell (Closes: #783578).
+
+ -- Jörg Frings-Fürst <debian@jff-webhosting.net>  Thu, 30 Apr 2015 08:07:46 +0200
+
+shotwell (0.22.0-1) unstable; urgency=low
+
+  * New upstream release:
+    - Correct edited file handling (Closes: #747443).
+    - Better handling of imported files (Closes: #775950).
+  * Refresh patches:
+    - debian/patches/hardening.patch
+    - debían/patches/500-buildflags.patch
+  * Remove patch applied upstream:
+    - debian/patches/505-fix-viewer-desktop-file.patch
+  * For better debugging:
+    - shotwell-dbg:
+      + Add the temporary *.c files produced by valac
+        to temp-source.tar.xz placed in doc directory.
+    - debian/rules:
+      + Add --debug as configure parameter.
+      + Add override_dh_compress to exclude the *.tar.xz from compress.
+    - debian/docs:
+      + Move to shotwell.docs.
+    - New debian/shotwell-dbg.README.Debian.
+    - New link from debian/shotwell.README.Debian to
+      debian/shotwell-common.README.Debian.
+  * debian/control:
+    - For the libgphoto2 transition, set the minimum version for
+      libgphoto2-dev in Build-Depends to 2.5.4.
+  * New bug reporting:
+    - New debian/shotwell.bug-script.
+    - New debian/shotwell.install to install the apport file.
+
+ -- Jörg Frings-Fürst <debian@jff-webhosting.net>  Mon, 06 Apr 2015 07:59:33 +0200
+
+shotwell (0.20.2-2) unstable; urgency=low
+
+  * Add user scripts to replace shotwell-video-thumbnailer
+    if the thumbnailer is broken (Closes: #768637):
+    - New files:
+      + debian/shotwell.README.Debian
+      + debian/replace_thumbnailer.sh
+      + debian/shotwell.postrm
+      + debian/shotwell.examples
+    - Thanks to Teo Romera <teoromera@gmail.com>.
+  * debian/patches:
+    - Add 505-fix-viewer-desktop-file.patch to correct build of
+      shotwell-viewer.desktop (Closes: #776745).
+      + Thanks to Raphaël Halimi <raphael.halimi@gmail.com>.
+    - Rewrite 500-buildflags.patch to prevent FTBFS on
+      architectures i386 and powerpc.
+  * debian/control:
+    - Add Build-Depends libicu-dev for missing unicode/ucnv.h.
+
+ -- Jörg Frings-Fürst <debian@jff-webhosting.net>  Mon, 02 Feb 2015 05:16:56 +0100
+
+shotwell (0.20.2-1) unstable; urgency=medium
+
+  * New upstream release (Closes: #769025).
+  * debian/control:
+    - Remove useless ${shlibs:Depends} from shotwell-dbg.
+  * debian/rules:
+    - Remove useless hardening parts.
+  * New debian/patches/500-buildflags.patch:
+    - Poke requested Debian buildflags for hardening into Makefile.
+  * Add year 2015 for debian/* to debian/copyright.
+  * Remove debian/source/options because compression xz is standard now.
+
+ -- Jörg Frings-Fürst <debian@jff-webhosting.net>  Wed, 07 Jan 2015 14:23:48 +0100
+
+shotwell (0.20.1-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Add sharedobject-in-library-directory-missing-soname to
+    lintian-overrides.
+  * debian/patch/hardening.patch:
+    - Add removal of --fatal-warnings at plugins/Makefile.plugins.mk
+      to prevent build errors on armel and mips.
+
+ -- Jörg Frings-Fürst <debian@jff-webhosting.net>  Thu, 09 Oct 2014 11:57:41 +0200
+
+shotwell (0.20.0-1) unstable; urgency=medium
+
+  * New upstream release (Closes: #762357).
+  * debian/control:
+    - Bump Standards-Version to 3.9.6 (no changes required).
+    - Change Vcs-Browser to cgit.
+  * debian/copyright:
+    - Remove deleted file icons/hidden.svg.
+    - Add missed file icons/import-all.png.
+    - Remove whitspaces at EOL.
+  * debian/rules:
+    - Enable hardening=+all because files can open over network.
+    - Remove useless variable assignments.
+    - Add --debug to configure.
+
+ -- Jörg Frings-Fürst <debian@jff-webhosting.net>  Tue, 23 Sep 2014 18:56:52 +0200
+
+shotwell (0.18.1-2) unstable; urgency=medium
+
+  * New Maintainer (Closes: #755416).
+  * debian/copyright:
+    - Rewrite into machine-readable format.
+    - Add myself to the list of authors for debian/*.
+  * debian/control:
+    - Set myself as maintainer.
+    - For previously not existing Vcs
+      + Create a new git repository on alioth.
+      + Add the Fields Vcs-Browser and Vcs-Git.
+
+ -- Jörg Frings-Fürst <debian@jff-webhosting.net>  Wed, 30 Jul 2014 07:27:30 +0200
+
+shotwell (0.18.1-1) unstable; urgency=medium
+
+  * New upstream release.
+  * debian/control:
+    - Set Homepage field to the new home page.
+  * debian/control:
+    - Set download reference to the new site.
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Sun, 20 Jul 2014 17:15:28 +0200
+
+shotwell (0.18.0-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Upload to unstable.
+  * debian/patches/hardening.patch:
+    - Refresh for new upstream release.
+  * debian/patches/thumbnailer_path.patch:
+    - Removed, not needed.
+  * debian/control:
+    - Re-add myself as Uploader.
+    - Add gnome-doc-utils to Build-Depends.
+    - Replace libgphoto2-2-dev with libgphoto2-dev (Closes: #739355).
+  * debian/manpages:
+    - Do not install shotwell-video-thumbnailer anymore.
+  * debian/shotwell-video-thumbnailer.1:
+    - Removed, no longer needed.
+  * debian/rules:
+    - Explicitly set libexecdir to /usr/lib (Closes: #742083).
+  * debian/watch:
+    - Point to the GNOME FTP server.
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Thu, 27 Mar 2014 14:02:25 +0100
+
+shotwell (0.17.0-1) experimental; urgency=low
+
+  * Team upload.
+  * New upstream release.
+  * debian/patches/format_string.patch:
+    - Removed, applied upstream.
+  * debian/patches/hardening.patch:
+    - Refresh for new upstream release.
+  * debian/patches/libexec.patch
+    - Refresh for new upstream release.
+  * debian/patches/thumbnailer_path.patch:
+    - Refresh for new upstream release.
+  * debian/shotwell.lintian-overrides:
+    - Remove useless library-not-linked-against-libc tag.
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Sun, 16 Feb 2014 14:10:50 +0100
+
+shotwell (0.15.0-2) unstable; urgency=medium
+
+  * Team upload to unstable.
+  * debian/control:
+    - Bump Standards-Version to 3.9.5.
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Sun, 16 Feb 2014 14:02:15 +0100
+
+shotwell (0.15.0-1) experimental; urgency=low
+
+  * Team upload.
+  * New upstream release (Closes: #726594).
+    - Fix FTBFS with vala 0.22 (Closes: #726510).
+  * debian/patches/document-mode.patch:
+    - Removed, applied upstream.
+  * debian/patches/hardening.patch:
+    - Refresh for new upstream release.
+  * debian/patches/libexec.patch
+    - Refresh for new upstream release.
+  * debian/patches/thumbnailer_path.patch:
+    - Install shotwell-video-thumbnailer under /usr/bin.
+  * debian/control:
+    - Build-depend against desktop-file-utils.
+    - Refresh build-dependency miminum versions.
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Thu, 17 Oct 2013 22:04:11 +0200
+
+shotwell (0.14.1-3) unstable; urgency=low
+
+  * Team upload.
+  * debian/patches/document-mode.patch:
+    - Remove reference to document-mode processing APIs (Closes: #710141).
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Thu, 11 Jul 2013 10:59:32 +0200
+
+shotwell (0.14.1-2) unstable; urgency=low
+
+  * Team upload.
+  * Upload to unstable.
+  * debian/patches/libexec.patch:
+    - Do not install files in libexec directory (Closes: #706430).
+  * debian/control:
+    - Build-depend on valac (>= 0.18.0).
+  * debian/shotwell-common.lintian-overrides:
+    - Removed, no longer needed.
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Sun, 12 May 2013 23:22:52 +0200
+
+shotwell (0.14.1-1) experimental; urgency=low
+
+  * New upstream release.
+  * Update debian/copyright file.
+  * Install shotwell-settings-migrator script in shotwell-common package
+    (Closes: #705423).
+  * Fix hardening-no-fortify-functions lintian warnings.
+  * Fix hardening-no-relro lintian warning.
+
+ -- Devid Antonio Filoni <d.filoni@ubuntu.com>  Sun, 28 Apr 2013 15:10:11 +0200
+
+shotwell (0.14.0-1) experimental; urgency=low
+
+  * Team upload.
+  * New upstream release.
+    - Fixes strftime strings that generated bogus dates in the
+      Catalan translation (Closes: #675102).
+    - Fix assertion error on startup (Closes: #683883).
+  * debian/control:
+    - Bump build-dependencies minimum requirements.
+      - valac-0.18 (>= 0.18.0)
+      - libgexiv2-dev (>= 0.4.90)
+      - libgstreamer1.0-dev (>= 1.0.0)
+      - libgstreamer-plugins-base1.0-dev (>= 1.0.0)
+    - Drop libunique-3.0-dev and libusb-dev, no longer needed.
+  * debian/rules:
+    - Explicitly call configure instead of dh_auto_configure.
+  * debian/watch:
+    - Do not list preview versions.
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Thu, 21 Mar 2013 20:14:36 +0100
+
+shotwell (0.13.1-1) experimental; urgency=low
+
+  * Team upload.
+  * New upstream release.
+    - Fix crash on invalid piwigo response (Closes: #687930).
+  * debian/control:
+    - Remove DM-Upload-Allowed field.
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Wed, 28 Nov 2012 11:26:02 +0100
+
+shotwell (0.13.0-1) experimental; urgency=low
+
+  * Team upload.
+  * New upstream release (Closes: #688365).
+    - Fix French localization (Closes: #684578, #684579).
+  * debian/patches/gettext.patch:
+    - Removed, applied upstream.
+  * debian/patches/metadata.patch:
+    - Removed, applied upstream.
+  * debian/patches/openmp.patch:
+    - Removed, no longer needed.
+  * debian/control:
+    - Build-depend on valac-0.18 (>= 0.17.2) and libjson-glib-dev.
+    - Mention CR2 format in package description (Closes: #685300).
+    - Bump Standards-Version to 3.9.4.
+  * debian/watch:
+    - Track xz tarballs.
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Sat, 29 Sep 2012 14:58:49 +0200
+
+shotwell (0.12.3-2) unstable; urgency=low
+
+  * Team upload.
+  * debian/patches/metadata.patch:
+    - Cherry-pick patches from upstream repository to fix crashes while
+      managing metadata (Closes: #665498).
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Sun, 22 Jul 2012 11:56:51 +0200
+
+shotwell (0.12.3-1) unstable; urgency=low
+
+  * Team upload.
+  * New upstream release (Closes: #674720).
+  * debian/patches/sidebar-bg-color.patch:
+    - Removed, applied upstream.
+  * debian/patches/openmp.patch:
+    - Refresh for new upstream release.
+  * debian/control:
+    - Move architecture-independent data into shotwell-common package.
+    - Let shotwell binary depend on the new shotwell-common package.
+    - Provide shotwell-dbg packaage.
+  * debian/rules:
+    - Pass --dbg-package=shotwell-dbg to dh sequencer.
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Sun, 03 Jun 2012 12:19:04 +0200
+
+shotwell (0.12.2-1) unstable; urgency=low
+
+  * Team upload to unstable
+  * New upstream release.
+  * debian/patches/gcc_format_string.patch:
+    - Removed, applied upstream.
+  * debian/patches/format_string.patch:
+    - Fix FTBFS with missing format string parameter.
+  * debian/patches/openmp.patch:
+    - Pass -fopenmp to gcc flags.
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Sun, 06 May 2012 19:50:17 +0200
+
+shotwell (0.12.1-1) experimental; urgency=low
+
+  * Team upload.
+  * New upstream release (Closes: #666053).
+    - Login into flickr with OpenID (Closes: #641472).
+    - In view mode, when deleting a photo, do not switch back to
+      thumbnail mode (Closes: #655100).
+    - Event names are displayed correctly (Closes: #664980).
+  * debian/patches/gcc_format_string.patch:
+    - fix FTBFS with recent gcc.
+  * debian/patches/vala-0.14.1.patch:
+    - Removed, no longer needed.
+  * debian/patches/*
+    - Refresh for new upstream release.
+  * debian/compat:
+    - Bump compatibility level to 9.
+  * debian/control:
+    - Build-depend on valac-0.16.
+    - Build-depend on librest-dev.
+    - Refresh build-dependencies.
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Thu, 29 Mar 2012 23:28:23 +0200
+
+shotwell (0.11.6-2) unstable; urgency=low
+
+  * Team upload.
+  * debian/patches/vala-0.14.1.patch:
+    - Allow compilation with vala-0.14.1.
+  * debian/control:
+    - Build-depend on unversioned valac (Closes: #663318).
+    - Bump Standards-Version to 3.9.3.
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Sun, 18 Mar 2012 01:36:18 +0100
+
+shotwell (0.11.6-1) unstable; urgency=low
+
+  * Team upload.
+  * New upstream release.
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Thu, 08 Dec 2011 22:38:11 +0100
+
+shotwell (0.11.5-1) unstable; urgency=low
+
+  * New upstream release (Closes: 645942).
+  * Show translations in GNOME menu, thanks to Hideki Yamane
+    <henrich@debian.or.jp> for this (Closes: 644905).
+
+  [ Luca Falavigna ]
+  * Enable DM upload.
+
+ -- Devid Antonio Filoni <d.filoni@ubuntu.com>  Sun, 23 Oct 2011 01:39:38 +0200
+
+shotwell (0.11.2-1) unstable; urgency=low
+
+  * Team upload.
+  * New upstream bugfix release.
+  * debian/rules:
+    - Do not compile GConf schema (Closes: #641677).
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Sat, 24 Sep 2011 14:27:33 +0200
+
+shotwell (0.11.1-1) unstable; urgency=low
+
+  * Team upload.
+  * New upstream bugfix release.
+  * debian/patches/sidebar-bg-color.patch:
+    - Refresh for new upstream release.
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Tue, 13 Sep 2011 20:53:25 +0200
+
+shotwell (0.11.0-1) unstable; urgency=low
+
+  * Team upload.
+  * New upstream release (Closes: #639863).
+  * debian/patches/sidebar-bg-color.patch:
+    - Refresh for new upstream release.
+  * debian/control:
+    - Build-depend on libgstreamer-plugins-base0.10-dev.
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Thu, 01 Sep 2011 19:59:07 +0200
+
+shotwell (0.10.1-1) unstable; urgency=low
+
+  * Team upload
+  * New upstream release (Closes: #629311).
+  * debian/patches/non-linux-fixes.patch:
+    - Removed, waiting for proper upstream porting efforts.
+  * debian/patches/sidebar-bg-color.patch:
+    - Refresh for new upstream release.
+  * debian/control:
+    - Add Debian Shotwell Maintainers to Maintainers.
+    - Move Devid to Uploaders.
+    - libwebkitgtk-dev transition (Closes: #635426).
+    - Set Architecture to linux-any, shotwell is currently unsupported
+      outside of Linux platform, and require some porting.
+  * debian/shotwell-video-thumbnailer.1:
+    - Provide a minimal man page for shotwell-video-thumbnailer
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Sun, 21 Aug 2011 15:38:31 +0200
+
+shotwell (0.9.3-1) unstable; urgency=low
+
+  * New upstream release (Closes: #622705).
+  * Update debian/patches/non-linux-fixes.patch patch.
+  * Bump Standards-Version to 3.9.2.
+
+ -- Devid Antonio Filoni <d.filoni@ubuntu.com>  Sun, 01 May 2011 13:09:48 +0200
+
+shotwell (0.9.1-1) unstable; urgency=low
+
+  * Upload to unstable.
+  * New upstream release (Closes: #620765).
+  * debian/control: modify libgexiv2-dev (>= 0.3.1) to libgexiv2-dev
+    (>= 0.2.2-4) in Build-Depends field.
+  * Update debian/patches/non-linux-fixes.patch patch.
+
+ -- Devid Antonio Filoni <d.filoni@ubuntu.com>  Fri, 08 Apr 2011 23:28:01 +0200
+
+shotwell (0.9.0-1) experimental; urgency=low
+
+  * New upstream release (Closes: #614730, #593660, #619478).
+  * debian/control: modify valac-0.10 (>= 0.10.4) to valac-0.12 (>= 0.11.7)
+    in Build-Depends field.
+  * debian/control: add m4 and libgnomevfs2-dev (>= 2.24.2) to Build-Depends
+    field.
+  * debian/control: modify libgexiv2-dev (>= 0.2.0) to libgexiv2-dev
+    (>= 0.3.1) in Build-Depends field.
+  * Remove debian/patches/vala-0_10_4.patch patch, fixed upstream.
+  * Update debian/patches/non-linux-fixes.patch patch.
+  * Update debian/copyright file.
+  * Override library-not-linked-against-libc lintian warnings.
+  * Override image-file-in-usr-lib lintian warnings.
+
+ -- Devid Antonio Filoni <d.filoni@ubuntu.com>  Sun, 27 Mar 2011 15:07:13 +0200
+
+shotwell (0.8.1-4) unstable; urgency=low
+
+  * A patch was reverting some changes introduced in 0.8.1-3, apply them.
+
+ -- Devid Antonio Filoni <d.filoni@ubuntu.com>  Sun, 27 Mar 2011 12:42:49 +0200
+
+shotwell (0.8.1-3) unstable; urgency=low
+
+  * Update debian/patches/non-linux-fixes.patch patch (Closes: #619682).
+  * Add debian/patches/vala-0_10_4.patch patch, fix FTBFS caused by
+    valac 0.10.4.
+  * debian/control: modify valac-0.10 (>= 0.9.8) to valac-0.10 (>= 0.10.4)
+    in Build-Depends field.
+
+ -- Devid Antonio Filoni <d.filoni@ubuntu.com>  Sat, 26 Mar 2011 23:45:32 +0100
+
+shotwell (0.8.1-2) unstable; urgency=low
+
+  * Upload to unstable (Closes: #614445).
+  * debian/control: modify libjson-glib-dev (>= 0.10.28) to libjson-glib-dev
+    (>= 0.7.6)
+  * debian/control: modify libgstreamer0.10-dev (>= 0.7.6) to
+    libgstreamer0.10-dev (>= 0.10.28)
+  * debian/control: modify libraw-dev to libraw-dev (>= 0.13.1-2).
+
+ -- Devid Antonio Filoni <d.filoni@ubuntu.com>  Mon, 28 Feb 2011 22:16:51 +0100
+
+shotwell (0.8.1-1) experimental; urgency=low
+
+  * New upstream release.
+  * debian/control: modify valac-0.10 (>= 0.9.7) to valac-0.10 (>= 0.9.8) in
+    Build-Depends field.
+  * Update debian/copyright.
+
+ -- Devid Antonio Filoni <d.filoni@ubuntu.com>  Thu, 27 Jan 2011 23:05:40 +0100
+
+shotwell (0.8.0-1) experimental; urgency=low
+
+  * New upstream release.
+  * debian/control: modify valac (>= 0.9.5) to valac-0.10 (>= 0.9.7) in
+    Build-Depends field.
+  * debian/control: add libjson-glib-dev and libgstreamer0.10-dev to
+    Build-Depends field.
+  * Update debian/patches/sidebar-bg-color.patch patch.
+  * Update debian/patches/non-linux-fixes.patch patch.
+
+ -- Devid Antonio Filoni <d.filoni@ubuntu.com>  Fri, 07 Jan 2011 15:14:41 +0100
+
+shotwell (0.7.2-1) experimental; urgency=low
+
+  * New upstream release.
+  * Update debian/patches/sidebar-bg-color.patch patch.
+
+ -- Devid Antonio Filoni <d.filoni@ubuntu.com>  Wed, 15 Sep 2010 14:56:23 +0200
+
+shotwell (0.7.0-1) experimental; urgency=low
+
+  * New upstream release.
+  * debian/control: remove Luca Falavigna from Uploaders field.
+  * debian/control: update valac version to >= 0.9.5.
+  * debian/control: update libgexiv2-dev version to >= 0.2.0.
+  * Update debian/patches/non-linux-fixes.patch patch.
+  * debian/patches/sidebar-bg-color.patch: don't set sidebar background color
+    (Closes: #594170).
+  * Bump Standards-Version to 3.9.1.
+
+ -- Devid Antonio Filoni <d.filoni@ubuntu.com>  Tue, 24 Aug 2010 17:34:23 +0200
+
+shotwell (0.6.1-1) unstable; urgency=low
+
+  * New upstream release.
+  * debian/control:
+    - Build-depend on libusb-dev.
+    - Bump libgexiv2-dev version to be at least 0.1.0.
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Mon, 05 Jul 2010 20:05:18 +0200
+
+shotwell (0.6.0-1) unstable; urgency=low
+
+  * New upstream release.
+  * debian/patches/non-linux-fixes.patch:
+    - Refresh for new upstream release.
+  * debian/control:
+    - Bump Standards-Version to 3.9.0, no changes required.
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Wed, 30 Jun 2010 20:48:44 +0200
+
+shotwell (0.5.91-2) experimental; urgency=low
+
+  * debian/patches/non-linux-fixes.patch:
+    - Let libraw to be available under non-Linux architectures, fix FTBFS
+      on kFreeBSD (Closes: #586634).
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Mon, 21 Jun 2010 23:24:16 +0200
+
+shotwell (0.5.91-1) experimental; urgency=low
+
+  * New upstream development release.
+  * debian/patches/non-linux-fixes.patch:
+    - Refresh for new upstream release.
+  * debian/control:
+    - Build-depend on libgexiv2-dev and libraw-dev.
+    - No longer build-depend on libhal-dev.
+    - Adjust build-dependencies versioning.
+  * debian/README.source:
+    - Upstream clarified licensing of some icons with their authors, now
+      they are released under CC-BY-SA-3.0, so there is no need to repack
+      upstream tarball anymore, thus removing this file.
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Sun, 20 Jun 2010 16:09:43 +0200
+
+shotwell (0.5.2+dfsg-2) unstable; urgency=low
+
+  * debian/patches/non-linux-fixes.patch:
+    - Add Hurd bits to allow build on that architecture.
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Mon, 07 Jun 2010 23:41:52 +0200
+
+shotwell (0.5.2+dfsg-1) unstable; urgency=low
+
+  * New upstream release (Closes: #578903).
+  * Drop vala_0.8.0.patch patch, already applied by upstream.
+  * debian/control: add Luca Falavigna to Uploaders field.
+  * Add debian/patches/non-linux-fixes.patch patch from Peter Green to add
+    support for kfreebsd and hurd (Closes: #581662).
+  * debian/control: replace "libgudev-1.0-dev (>= 145)" with "libgudev-1.0-dev
+    (>= 145) [!kfreebsd-i386 !kfreebsd-amd64 !hurd-i386]" as suggested by
+    Peter Green.
+
+ -- Devid Antonio Filoni <d.filoni@ubuntu.com>  Sun, 23 May 2010 18:40:49 +0200
+
+shotwell (0.5.0+dfsg-1.1) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * debian/patches/vala_0.8.0.patch:
+    - Build with vala 0.8.0 (Closes: #577913).
+  * debian/control:
+    - Depend on librsvg2-common and dbus-x11 (Closes: #574112).
+    - Bump minimum valac version to 0.8.0.
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Sun, 18 Apr 2010 23:16:32 +0200
+
+shotwell (0.5.0+dfsg-1) unstable; urgency=low
+
+  * New upstream release.
+  * Update debian/copyright.
+  * Remove debian/patches directory, patches already applied upstream.
+  * debian/control: add libgudev-1.0-dev (>= 145) to Build-Depends field.
+  * Bump Standards-Version to 3.8.4.
+
+ -- Devid Antonio Filoni <d.filoni@ubuntu.com>  Mon, 15 Mar 2010 15:59:23 +0100
+
+shotwell (0.4.3+dfsg-1.1) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * debian/patches/02_vala_0.7.10.patch:
+    - Fix build with vala 0.7.10 (Closes: #569370).
+  * debian/control:
+    - Bump minimum valac version to 0.7.10.
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Sat, 20 Feb 2010 18:03:45 +0100
+
+shotwell (0.4.3+dfsg-1) unstable; urgency=low
+
+  * New upstream release.
+  * Switch to format 3.0 (quilt).
+  * Add debian/patches/01_GNU-kFreeBSD.diff patch from Cyril Brulebois to fix
+    FTBFS on GNU/kFreeBSD (Closes: #564306).
+
+ -- Devid Antonio Filoni <d.filoni@ubuntu.com>  Sat, 23 Jan 2010 18:56:33 +0100
+
+shotwell (0.4.2+dfsg-1) unstable; urgency=low
+
+  * Initial release (Closes: #561788).
+
+ -- Devid Antonio Filoni <d.filoni@ubuntu.com>  Wed, 06 Jan 2010 14:08:43 +0100

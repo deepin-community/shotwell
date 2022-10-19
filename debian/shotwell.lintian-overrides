@@ -1,0 +1,2 @@
+non-dev-pkg-with-shlib-symlink
+package-name-doesnt-match-sonames libshotwell-authenticator0 libshotwell-plugin-common0 libshotwell-plugin-dev-1.0-0

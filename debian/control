@@ -1,0 +1,76 @@
+Source: shotwell
+Section: gnome
+Priority: optional
+Maintainer: Jörg Frings-Fürst <debian@jff.email>
+Build-Depends:
+ appstream-util,
+ cmake,
+ debhelper-compat (= 13),
+ desktop-file-utils,
+ gnome-pkg-tools,
+ itstool,
+ libappstream-glib-dev,
+ libexif-dev (>= 0.6.16),
+ libgcr-3-dev,
+ libgdata-dev,
+ libgee-0.8-dev (>= 0.10),
+ libgexiv2-dev (>= 0.10.4),
+ libglib2.0-dev (>= 2.40),
+ libgphoto2-dev (>= 2.5.4),
+ libgstreamer-plugins-base1.0-dev (>= 1.0.0),
+ libgstreamer1.0-dev (>= 1.0.0),
+ libgtk-3-dev (>= 3.14),
+ libgudev-1.0-dev (>= 145),
+ libicu-dev,
+ libjson-glib-dev,
+ libraw-dev (>= 0.14),
+ librest-dev (>= 0.7),
+ libsoup2.4-dev (>= 2.26.0),
+ libsqlite3-dev (>= 3.5.9),
+ libwebkit2gtk-4.0-dev,
+ libxml2 (>= 2.6.32),
+ meson,
+ ninja-build,
+ valac (>= 0.46.0)
+Standards-Version: 4.6.0
+Rules-Requires-Root: binary-targets
+Homepage: https://wiki.gnome.org/Apps/Shotwell
+Vcs-Git: git://jff.email/opt/git/shotwell.git
+Vcs-Browser: https://jff.email/cgit/shotwell.git
+
+Package: shotwell
+Architecture: linux-any
+Depends:
+ ${shlibs:Depends},
+ ${misc:Depends},
+ shotwell-common (= ${source:Version}),
+ dconf-cli,
+ default-dbus-session-bus | dbus-session-bus,
+ librsvg2-common
+Replaces: shotwell-common (<< 0.26.2-1)
+Description: digital photo organizer
+ Shotwell is a digital photo organizer designed for the GNOME desktop
+ environment. It allows you to import photos, pictures, images and videos
+ from disk or camera. Shotwell can organize them in collections and in other
+ various ways. The viewer shows them in full-window or fullscreen mode and
+ presents them as galleries or slideshows. The integrated editor can rotate,
+ flip, crop and tag the photos, adjust the colors und remove red eyes. Export
+ is possible to facebook, Flickr or Youtube to share with others. It is able
+ to manage a lot of image formats such as JPEG, PNG, BMP, TIFF and Raw CR2.
+
+Package: shotwell-common
+Architecture: all
+Depends: ${misc:Depends}
+Recommends: shotwell
+Breaks: shotwell (<< 0.26.2-1)
+Description: digital photo organizer - common files
+ Shotwell is a digital photo organizer designed for the GNOME desktop
+ environment. It allows you to import photos, pictures, images and videos
+ from disk or camera. Shotwell can organize them in collections and in other
+ various ways. The viewer shows them in full-window or fullscreen mode and
+ presents them as galleries or slideshows. The integrated editor can rotate,
+ flip, crop and tag the photos, adjust the colors und remove red eyes. Export
+ is possible to facebook, Flickr or Youtube to share with others. It is able
+ to manage a lot of image formats such as JPEG, PNG, BMP, TIFF and Raw CR2.
+ .
+ This package provides image files and documentation for Shotwell.

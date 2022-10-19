@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2016 Software Freedom Conservancy Inc. -->
+<component type="desktop">
+  <id>shotwell.desktop</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>LGPL-2.1+</project_license>
+  <translation type="gettext">shotwell</translation>
+  <name>Shotwell</name>
+  <summary>Popular photo manager</summary>
+  <description>
+    <p>
+      Shotwell is an easy-to-use, fast photo organizer designed for the GNOME desktop.
+      It allows you to import photos from your camera or disk, organize them by date and subject
+      matter, even ratings.  It also offers basic photo editing, like crop, red-eye correction,
+      color adjustments, and straighten.  Shotwell’s non-destructive photo editor does not alter
+      your master photos, making it easy to experiment and correct errors.
+    </p>
+    <p>
+      When ready, Shotwell can upload your photos to various web sites, such as Facebook, Flickr,
+      Google Photos, and more.
+    </p>
+    <p>
+      Shotwell supports JPEG, PNG, TIFF, and a variety of RAW file formats.
+    </p>
+  </description>
+  <url type="homepage">https://wiki.gnome.org/Apps/Shotwell</url>
+  <content_rating type="oars-1.0" />
+  <screenshots>
+    <screenshot type="default">
+        <image>https://gitlab.gnome.org/GNOME/shotwell/raw/master/data/appdata/harbor.png</image>
+      <caption><!-- Describe this screenshot in less than ~10 words --></caption>
+    </screenshot>
+    <screenshot>
+        <image>https://gitlab.gnome.org/GNOME/shotwell/raw/master/data/appdata/import.png</image>
+      <caption><!-- Describe this screenshot in less than ~10 words --></caption>
+    </screenshot>
+    <screenshot>
+        <image>https://gitlab.gnome.org/GNOME/shotwell/raw/master/data/appdata/organize.png</image>
+      <caption><!-- Describe this screenshot in less than ~10 words --></caption>
+    </screenshot>
+    <screenshot>
+        <image>https://gitlab.gnome.org/GNOME/shotwell/raw/master/data/appdata/edit.png</image>
+      <caption><!-- Describe this screenshot in less than ~10 words --></caption>
+    </screenshot>
+    <screenshot>
+        <image>https://gitlab.gnome.org/GNOME/shotwell/raw/master/data/appdata/publish.png</image>
+      <caption><!-- Describe this screenshot in less than ~10 words --></caption>
+    </screenshot>
+  </screenshots>
+  <update_contact>mail@jensge.org</update_contact>
+  <project_group>GNOME</project_group>
+
+  <developer_name>The Shotwell developers</developer_name>
+
+  <url type="bugtracker">https://gitlab.gnome.org/GNOME/shotwell/issues</url>
+  <releases>
+      <release version="0.30.14" date="2021-08-18" urgency="high" type="stable" />
+      <release version="0.30.13" date="2021-08-17" urgency="low" type="stable" />
+      <release version="0.30.12" date="2021-05-24" urgency="medium" type="stable" />
+      <release version="0.30.11" date="2020-09-05" urgency="low" type="stable" />
+      <release version="0.30.10" date="2020-05-22" urgency="high" type="stable" />
+      <release version="0.30.9" date="2020-05-03" urgency="medium" type="stable" />
+      <release version="0.30.8" date="2020-01-03" urgency="medium" type="stable" />
+      <release version="0.30.7" date="2019-08-20" urgency="medium" type="stable" />
+      <release version="0.30.6" date="2019-08-20" urgency="medium" type="stable" />
+      <release version="0.30.5" date="2019-08-14" urgency="medium" type="stable" />
+      <release version="0.30.4" date="2019-04-24" urgency="medium" type="stable" />
+  </releases>
+
+  <!--GNOME Projects usually have no per-app donation page-->
+  <url type="donation">http://www.gnome.org/friends/</url>
+
+  <url type="help">http://shotwell-project.org/doc/html</url>
+</component>
