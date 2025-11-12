@@ -1,3 +1,9 @@
+shotwell (0.30.14-1deepin1) unstable; urgency=medium
+
+  * fix: multiple build errors by backporting mainline patches
+
+ -- sisungo <sisungo@icloud.com>  Wed, 12 Nov 2025 16:51:34 +0800
+
 shotwell (0.30.14-1) unstable; urgency=medium
 
   * New upstream release.

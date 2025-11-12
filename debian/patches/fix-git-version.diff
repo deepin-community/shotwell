@@ -1,0 +1,143 @@
+--- shotwell-0.30.14.orig/git-hash
++++ /dev/null
+@@ -1,4 +0,0 @@
+-#!/bin/sh
+-
+-cd $MESON_SOURCE_ROOT
+-exec git rev-parse HEAD 2>/dev/null
+--- shotwell-0.30.14.orig/meson.build
++++ shotwell-0.30.14/meson.build
+@@ -20,7 +20,8 @@ vapi_incdir = include_directories('vapi'
+ shotwell_plugin_dir = join_paths(get_option('libdir'), 'shotwell', 'plugins', 'builtin')
+ 
+ add_global_arguments(['-DHAVE_CONFIG_H=1'],
+-                     ['-include'], ['config.h'], language : 'c')
++                     ['-include'], ['config.h'],
++                     language : 'c')
+ add_global_arguments(['--target-glib=2.40',
+                       '--vapidir=@0@'.format(join_paths(meson.current_source_dir(),
+                         'vapi')),
+@@ -28,6 +29,8 @@ add_global_arguments(['--target-glib=2.4
+                       '--enable-experimental',
+                       '--enable-deprecated'], language : 'vala')
+ 
++version_h = vcs_tag(command: ['git', 'rev-parse', 'HEAD'], input: 'version.h.in', output: 'version.h', fallback: '')
++version = declare_dependency(sources : version_h, include_directories : include_directories('.'))
+ if get_option('fatal_warnings')
+     add_global_arguments(
+         [
+@@ -37,13 +40,6 @@ if get_option('fatal_warnings')
+     )
+ endif
+ 
+-gitver = run_command(find_program('git-hash'))
+-if gitver.returncode() == 0
+-  add_global_arguments(['-D_GIT_VERSION="@0@"'.format(gitver.stdout().strip())],
+-    language : 'c')
+-  add_global_arguments(['--define=_GITVERSION'], language : 'vala')
+-endif
+-
+ gtk = dependency('gtk+-3.0', version : '>= 3.22')
+ gio = dependency('gio-2.0', version: '>= 2.40')
+ gmodule = dependency('gmodule-2.0', version: '>= 2.40')
+--- shotwell-0.30.14.orig/src/International.vala
++++ shotwell-0.30.14/src/International.vala
+@@ -4,8 +4,6 @@
+  * See the COPYING file in this distribution.
+  */
+ 
+-extern const string _LANG_SUPPORT_DIR;
+-
+ public const string TRANSLATABLE = "translatable";
+ 
+ namespace InternationalSupport {
+--- shotwell-0.30.14.orig/src/Resources.vala
++++ shotwell-0.30.14/src/Resources.vala
+@@ -4,25 +4,13 @@
+  * See the COPYING file in this distribution.
+  */
+ 
+-// defined by ./configure or Makefile and included by gcc -D
+-extern const string _PREFIX;
+-extern const string _VERSION;
+-extern const string GETTEXT_PACKAGE;
+-extern const string _LIB;
+-extern const string _LIBEXECDIR;
+-extern const string? _GIT_VERSION;
+-
+ namespace Resources {
+     public const string APP_TITLE = "Shotwell";
+     public const string APP_LIBRARY_ROLE = _("Photo Manager");
+     public const string APP_DIRECT_ROLE = _("Photo Viewer");
+     public const string APP_VERSION = _VERSION;
+ 
+-#if _GITVERSION
+     public const string? GIT_VERSION = _GIT_VERSION;
+-#else
+-    public const string? GIT_VERSION = null;
+-#endif
+ 
+     public const string COPYRIGHT = _("Copyright 2016 Software Freedom Conservancy Inc.");
+     public const string APP_GETTEXT_PACKAGE = GETTEXT_PACKAGE;
+--- shotwell-0.30.14.orig/src/main.vala
++++ shotwell-0.30.14/src/main.vala
+@@ -383,7 +383,7 @@ void main(string[] args) {
+     }
+ 
+     if (CommandlineOptions.show_version) {
+-        if (Resources.GIT_VERSION != null)
++        if (Resources.GIT_VERSION != "")
+             print("%s %s (%s)\n", Resources.APP_TITLE, Resources.APP_VERSION, Resources.GIT_VERSION);
+         else
+             print("%s %s\n", Resources.APP_TITLE, Resources.APP_VERSION);
+@@ -415,7 +415,7 @@ void main(string[] args) {
+     
+     Debug.init(is_string_empty(filename) ? Debug.LIBRARY_PREFIX : Debug.VIEWER_PREFIX);
+ 
+-    if (Resources.GIT_VERSION != null)
++    if (Resources.GIT_VERSION != "")
+         message("Shotwell %s %s (%s)",
+             is_string_empty(filename) ? Resources.APP_LIBRARY_ROLE : Resources.APP_DIRECT_ROLE,
+             Resources.APP_VERSION, Resources.GIT_VERSION);
+--- shotwell-0.30.14.orig/src/meson.build
++++ shotwell-0.30.14/src/meson.build
+@@ -32,7 +32,7 @@ endif
+ 
+ shotwell_deps = [gio, gee, sqlite, gtk, sqlite, posix, gphoto2,
+                  gstreamer_pbu, gio_unix, gudev, gexiv2, gmodule,
+-                 libraw, libexif, sw_plugin]
++                 libraw, libexif, sw_plugin, version]
+ if unity_available
+     shotwell_deps += [unity]
+ endif
+@@ -244,6 +244,7 @@ executable('shotwell',
+            vala_args : ['--pkg', 'libgphoto2',
+                         '--pkg', 'libraw',
+                         '--pkg', 'libexif',
++                        '--pkg', 'version',
+                         '--gresources',
+                         join_paths(meson.source_root(),
+                           'org.gnome.Shotwell.gresource.xml')
+--- /dev/null
++++ shotwell-0.30.14/vapi/version.vapi
+@@ -0,0 +1,14 @@
++[CCode (cheader_filename="version.h")]
++public const string? _GIT_VERSION;
++[CCode (cheader_filename = "config.h")]
++public const string _PREFIX;
++[CCode (cheader_filename = "config.h")]
++public const string _VERSION;
++[CCode (cheader_filename = "config.h")]
++public const string GETTEXT_PACKAGE;
++[CCode (cheader_filename = "config.h")]
++public const string _LIB;
++[CCode (cheader_filename = "config.h")]
++public const string _LIBEXECDIR;
++[CCode (cheader_filename = "config.h")]
++public const string _LANG_SUPPORT_DIR;
+--- /dev/null
++++ shotwell-0.30.14/version.h.in
+@@ -0,0 +1,3 @@
++#pragma once
++
++#define _GIT_VERSION "@VCS_TAG@"
